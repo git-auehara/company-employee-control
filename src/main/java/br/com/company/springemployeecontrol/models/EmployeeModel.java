@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
 @Data
@@ -14,6 +15,10 @@ import java.time.LocalDateTime;
 public class EmployeeModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public EmployeeModel(){
+        this.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
